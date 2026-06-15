@@ -3,15 +3,21 @@ const cors = require("cors");
 const multer = require("multer");
 const mongoose = require("mongoose");
 const { spawn } = require("child_process");
-
+const https = require("https");
+const fs = require("fs");
 const Student = require("./models/Student");
 const Attendance = require("./models/Attendance");
 
 const app = express();
-
+const path = require("path");
 app.use(cors());
 app.use(express.json());
 
+app.use(
+    express.static(
+        path.join(__dirname, "../Frontend/dist")
+    )
+);
 mongoose
     .connect("mongodb://localhost:27017/attendance_system")
     .then(() => {
@@ -216,11 +222,18 @@ app.get(
     }
 );
 
-
-
-// END OF ADDITION
-app.listen(5000, () => {
-    console.log(
-        "Server running on port 5000"
+app.get(/.*/, (req, res) => {
+    res.sendFile(
+        path.join(__dirname, "../Frontend/dist/index.html")
     );
+});
+
+https.createServer(
+    {
+        key: fs.readFileSync("key.pem"),
+        cert: fs.readFileSync("cert.pem"),
+    },
+    app
+).listen(5000, "0.0.0.0", () => {
+    console.log("HTTPS server running on port 5000");
 });

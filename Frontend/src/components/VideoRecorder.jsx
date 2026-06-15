@@ -47,7 +47,7 @@ function VideoRecorder() {
 
             try {
                 const response = await fetch(
-                    "http://localhost:5000/attendance",
+                    "/attendance",
                     {
                         method: "POST",
                         body: formData
