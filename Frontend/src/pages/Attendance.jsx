@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import VideoRecorder from "../components/VideoRecorder.jsx";
+import "./Attendance.css";
 
 function Attendance() {
-
     const [present, setPresent] = useState([]);
     const [absent, setAbsent] = useState([]);
     const [date, setDate] = useState("");
 
     const loadAttendance = async () => {
-
         try {
-
             const response = await fetch(
                 "https://10.91.135.233:5000/attendance/today"
             );
@@ -20,10 +18,7 @@ function Attendance() {
             setDate(data.date || "");
             setPresent(data.present || []);
             setAbsent(data.absent || []);
-
-        }
-        catch (err) {
-
+        } catch (err) {
             console.error(err);
         }
     };
@@ -33,62 +28,69 @@ function Attendance() {
     }, []);
 
     return (
-        <div>
+        <div className="attendance-container">
+            <h1 className="title">Face Recognition Attendance System</h1>
 
-            <h1>Attendance Recording</h1>
+            <div className="recorder-card">
+                <VideoRecorder />
+            </div>
 
-            <VideoRecorder />
-
-            <button onClick={loadAttendance}>
+            <button
+                className="refresh-btn"
+                onClick={loadAttendance}
+            >
                 Refresh Attendance
             </button>
 
-            <h2>{date}</h2>
+            <div className="date-card">
+                <h2>{date}</h2>
+            </div>
 
-            <h2>Present Students</h2>
+            <div className="tables-container">
+                <div className="table-card">
+                    <h2>✅ Present Students ({present.length})</h2>
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>USN</th>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {
-                        present.map(student => (
-                            <tr key={student._id}>
-                                <td>{student._id}</td>
-                                <td>{student.name}</td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>USN</th>
+                                <th>Name</th>
                             </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+                        </thead>
 
-            <h2>Absent Students</h2>
+                        <tbody>
+                            {present.map(student => (
+                                <tr key={student._id}>
+                                    <td>{student._id}</td>
+                                    <td>{student.name}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>USN</th>
-                        <th>Name</th>
-                    </tr>
-                </thead>
+                <div className="table-card">
+                    <h2>❌ Absent Students ({absent.length})</h2>
 
-                <tbody>
-                    {
-                        absent.map(student => (
-                            <tr key={student._id}>
-                                <td>{student._id}</td>
-                                <td>{student.name}</td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>USN</th>
+                                <th>Name</th>
                             </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+                        </thead>
 
+                        <tbody>
+                            {absent.map(student => (
+                                <tr key={student._id}>
+                                    <td>{student._id}</td>
+                                    <td>{student.name}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     );
 }

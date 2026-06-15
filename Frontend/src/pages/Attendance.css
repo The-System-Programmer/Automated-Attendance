@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    background: #f5f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.attendance-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.recorder-card,
+.table-card,
+.date-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.refresh-btn {
+    margin: 20px 0;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.refresh-btn:hover {
+    background: #1d4ed8;
+}
+
+.date-card {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tables-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th {
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background: #f8fafc;
+}
+
+@media (max-width: 768px) {
+    .tables-container {
+        grid-template-columns: 1fr;
+    }
+}
