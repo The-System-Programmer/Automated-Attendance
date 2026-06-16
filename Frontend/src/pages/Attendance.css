@@ -1,111 +1,257 @@
 /* Attendance.css */
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+body {
+    font-family: Inter, Arial, sans-serif;
+    background: #f2f8f7;
+    color: #1f2937;
+}
+
+/* PAGE */
+
 .attendance-container {
     min-height: 100vh;
-    padding: 20px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f5f7fa;
+
+    padding: 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e0f2ef 0%,
+            #f2f8f7 50%,
+            #edf6ff 100%
+        );
 }
+
+/* MAIN CARD */
 
 .attendance-card {
     width: 100%;
-    max-width: 500px;
+    max-width: 1500px;
+
     background: #ffffff;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    text-align: center;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    box-shadow:
+        0 10px 30px rgba(15, 118, 110, 0.08);
 }
+
+/* TITLE */
 
 .attendance-title {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    font-weight: 600;
+    text-align: center;
+
+    font-size: 2.3rem;
+    font-weight: 700;
+
+    color: #0f766e;
+
+    margin-bottom: 36px;
+
+    letter-spacing: -0.5px;
 }
 
-.video-container {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 12px;
-    background: #000;
+/* LAYOUT */
+
+.attendance-content {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
 }
 
-.attendance-video {
-    display: block;
+/* VIDEO SECTION */
+
+.video-section {
+    flex: 2;
+}
+
+/* CAMERA FEED */
+
+.video-section video,
+.video-section canvas {
     width: 100%;
-    height: auto;
-    aspect-ratio: 9 / 16; /* Mobile portrait */
+
+    aspect-ratio: 16 / 9;
+
     object-fit: cover;
-    background: #000;
+
+    border-radius: 18px;
+
+    border: 3px solid #d8f0eb;
+
+    background: #f8fafc;
+
+    box-shadow:
+        0 8px 24px rgba(15, 118, 110, 0.08);
 }
 
-.button-container {
-    margin-top: 20px;
+/* RESULTS PANEL */
+
+.attendance-results {
+    flex: 1;
+
+    background: #f9fcfb;
+
+    border: 1px solid #e2f1ed;
+
+    border-radius: 18px;
+
+    padding: 28px;
+
+    min-height: 580px;
+    max-height: 760px;
+
+    overflow-y: auto;
 }
 
-.record-btn,
-.stop-btn {
-    border: none;
-    border-radius: 10px;
-    padding: 12px 24px;
+.attendance-results h2 {
+    text-align: center;
+
+    color: #1f2937;
+
+    font-size: 1.4rem;
+
+    margin-bottom: 10px;
+}
+
+.attendance-date {
+    text-align: center;
+
+    color: #64748b;
+
+    margin-bottom: 28px;
+
+    font-size: 0.95rem;
+}
+
+/* ATTENDANCE GROUPS */
+
+.attendance-group {
+    margin-bottom: 28px;
+}
+
+.attendance-group h3 {
+    margin-bottom: 14px;
+
     font-size: 1rem;
     font-weight: 600;
-    cursor: pointer;
+
+    color: #334155;
+}
+
+.attendance-group ul {
+    list-style: none;
+}
+
+/* STUDENT CARDS */
+
+.attendance-group li {
+    padding: 14px 16px;
+
+    margin-bottom: 10px;
+
+    background: white;
+
+    border: 1px solid #eef3f2;
+
+    border-radius: 12px;
+
+    line-height: 1.5;
+
     transition: all 0.2s ease;
 }
 
-.record-btn {
-    background: #2563eb;
-    color: white;
+.attendance-group li:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 18px rgba(15, 118, 110, 0.08);
 }
 
-.record-btn:hover {
-    background: #1d4ed8;
+/* PRESENT STUDENTS */
+
+.attendance-group:first-of-type li {
+    border-left: 5px solid #14b8a6;
 }
 
-.stop-btn {
-    background: #dc2626;
-    color: white;
+/* ABSENT STUDENTS */
+
+.attendance-group:last-of-type li {
+    border-left: 5px solid #f87171;
 }
 
-.stop-btn:hover {
-    background: #b91c1c;
+/* SCROLLBAR */
+
+.attendance-results::-webkit-scrollbar {
+    width: 8px;
 }
 
-.record-btn:active,
-.stop-btn:active {
-    transform: scale(0.98);
+.attendance-results::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.attendance-results::-webkit-scrollbar-thumb {
+    background: #cbd5d1;
+    border-radius: 999px;
+}
+
+.attendance-results::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* MOBILE */
+
+@media (max-width: 1000px) {
+    .attendance-content {
+        flex-direction: column;
+    }
+
+    .video-section,
+    .attendance-results {
+        width: 100%;
+    }
+
+    .attendance-results {
+        min-height: auto;
+    }
 }
 
 @media (max-width: 768px) {
     .attendance-container {
-        padding: 12px;
+        padding: 16px;
     }
 
     .attendance-card {
-        padding: 16px;
-        border-radius: 12px;
+        padding: 24px;
+        border-radius: 20px;
     }
 
     .attendance-title {
-        font-size: 1.25rem;
+        font-size: 1.8rem;
+        margin-bottom: 28px;
     }
 
-    .record-btn,
-    .stop-btn {
-        width: 100%;
-        padding: 14px;
+    .attendance-content {
+        gap: 24px;
     }
-}
 
-@media (max-width: 480px) {
-    .attendance-video {
-        aspect-ratio: 3 / 4;
+    .attendance-results {
+        padding: 20px;
+    }
+
+    .attendance-group li {
+        font-size: 0.95rem;
     }
 }

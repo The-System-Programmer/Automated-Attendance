@@ -1,0 +1,159 @@
+.dashboard-container {
+    min-height: 100vh;
+    padding: 2rem;
+    background: #f4f5f7;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dashboard-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+.dashboard-nav {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.dashboard-btn {
+    border: none;
+    text-decoration: none;
+    background: #1f2937;
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dashboard-btn:hover {
+    transform: translateY(-2px);
+    background: #111827;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-top: 4rem;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(220px, 1fr)
+    );
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+}
+
+.stat-card h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.stat-card p {
+    margin-top: 0.8rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.table-wrapper {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stats-table thead {
+    background: #f9fafb;
+}
+
+.stats-table th {
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.stats-table td {
+    padding: 1rem;
+    border-top: 1px solid #e5e7eb;
+    color: #4b5563;
+}
+
+.stats-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.stats-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 1rem;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dashboard-nav {
+        width: 100%;
+    }
+
+    .dashboard-btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    .stats-table {
+        font-size: 0.85rem;
+    }
+
+    .stats-table th,
+    .stats-table td {
+        padding: 0.75rem;
+    }
+
+    .stat-card p {
+        font-size: 1.6rem;
+    }
+}

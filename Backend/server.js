@@ -160,6 +160,31 @@ app.get("/attendance/:date",async (req, res) => {
     }
 );
 
+app.get("/dashboard", async (req, res) => {
+    try {
+        const students = await Student.find();
+        const attendanceRecords = await Attendance.find();
+        const totalClasses = attendanceRecords.length;
+        const stats = students.map((student) => {let presentCount = 0;
+
+            attendanceRecords.forEach((record) => {
+                if (record.present.includes(student._id)) {
+                    presentCount++;
+                }
+            });
+            const absentCount = totalClasses - presentCount;
+            const percentage =
+                totalClasses > 0? Number(((presentCount / totalClasses) *100).toFixed(1)): 0;
+            return {
+                usn: student._id,name: student.name,totalClasses,present: presentCount,absent: absentCount,percentage,
+            };
+        });
+        res.json(stats);
+    } 
+    catch (err) {console.error(err);res.status(500).json({error: err.message,});
+    }
+});
+
 // Sends index.html to unknow routes
 app.get(/.*/, (req, res) => {res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));});
 
