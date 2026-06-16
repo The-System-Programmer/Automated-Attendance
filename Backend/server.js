@@ -42,7 +42,7 @@ const storage = multer.diskStorage({destination: (req, file, cb) => {cb(null, "u
 // Create upload middleware
 const upload = multer({ storage });
 
-// Upload vide and mark attendance
+// Upload video and mark attendance
 app.post("/attendance",upload.single("video"),async (req, res) => 
     {
         try 

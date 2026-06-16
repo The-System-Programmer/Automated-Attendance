@@ -1,79 +1,111 @@
-body {
-    margin: 0;
-    background: #f5f7fb;
-    font-family: Arial, Helvetica, sans-serif;
+/* Attendance.css */
+
+* {
+    box-sizing: border-box;
 }
 
 .attendance-container {
-    max-width: 1200px;
-    margin: auto;
+    min-height: 100vh;
     padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f7fa;
 }
 
-.title {
+.attendance-card {
+    width: 100%;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
-    color: #1e293b;
+}
+
+.attendance-title {
     margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
-.recorder-card,
-.table-card,
-.date-card {
-    background: white;
+.video-container {
+    width: 100%;
+    overflow: hidden;
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background: #000;
 }
 
-.refresh-btn {
-    margin: 20px 0;
-    padding: 12px 20px;
+.attendance-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16; /* Mobile portrait */
+    object-fit: cover;
+    background: #000;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+.record-btn,
+.stop-btn {
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.record-btn {
     background: #2563eb;
     color: white;
-    font-size: 16px;
-    cursor: pointer;
 }
 
-.refresh-btn:hover {
+.record-btn:hover {
     background: #1d4ed8;
 }
 
-.date-card {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.tables-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-th {
-    background: #2563eb;
+.stop-btn {
+    background: #dc2626;
     color: white;
-    padding: 12px;
 }
 
-td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+.stop-btn:hover {
+    background: #b91c1c;
 }
 
-tr:hover {
-    background: #f8fafc;
+.record-btn:active,
+.stop-btn:active {
+    transform: scale(0.98);
 }
 
 @media (max-width: 768px) {
-    .tables-container {
-        grid-template-columns: 1fr;
+    .attendance-container {
+        padding: 12px;
+    }
+
+    .attendance-card {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+    .attendance-title {
+        font-size: 1.25rem;
+    }
+
+    .record-btn,
+    .stop-btn {
+        width: 100%;
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .attendance-video {
+        aspect-ratio: 3 / 4;
     }
 }
