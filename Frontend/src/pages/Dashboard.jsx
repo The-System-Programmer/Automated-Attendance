@@ -17,9 +17,7 @@ function Dashboard() {
             const response = await fetch(
                 "https://localhost:5000/dashboard"
             );
-
             const data = await response.json();
-
             setStudents(data);
         } catch (err) {
             console.error(
@@ -40,29 +38,12 @@ function Dashboard() {
 
     const classAverage =
         totalStudents > 0
-            ? (
-                  students.reduce(
-                      (sum, student) =>
-                          sum +
-                          Number(
-                              student.percentage
-                          ),
-                      0
-                  ) / totalStudents
-              ).toFixed(1)
-            : 0;
+            ? (students.reduce((sum, student) =>sum +Number(student.percentage),0) / totalStudents
+              ).toFixed(1): 0;
 
     const highestAttendance =
         students.length > 0
-            ? Math.max(
-                  ...students.map(
-                      (student) =>
-                          Number(
-                              student.percentage
-                          )
-                  )
-              )
-            : 0;
+            ? Math.max(...students.map((student) =>Number(student.percentage))): 0;
 
     return (
         <div className="dashboard-container">

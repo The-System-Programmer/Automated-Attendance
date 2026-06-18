@@ -21,8 +21,7 @@ app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
 // Mongoose connection
 mongoose
-    .connect("mongodb://localhost:27017/attendance_system")
-    .then(() => {
+    .connect("mongodb://localhost:27017/attendance_system").then(() => {
         console.log("MongoDB Connected");
     })
     .catch((err) => {
