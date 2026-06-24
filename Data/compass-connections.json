@@ -1,0 +1,24 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "57a39fbe-ab51-4b2e-ae45-472d6c334faa",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1782300944318"
+        }
+      },
+      "favorite": {
+        "name": "fullstack"
+      },
+      "savedConnectionType": "recent",
+      "connectionOptions": {
+        "connectionString": "mongodb://localhost:27017/",
+        "oidc": {}
+      }
+    }
+  ]
+}

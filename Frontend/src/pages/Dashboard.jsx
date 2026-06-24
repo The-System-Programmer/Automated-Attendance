@@ -15,7 +15,7 @@ function Dashboard() {
             setLoading(true);
 
             const response = await fetch(
-                "https://localhost:5000/dashboard"
+                "https://10.91.135.233:5000/dashboard"
             );
             const data = await response.json();
             setStudents(data);

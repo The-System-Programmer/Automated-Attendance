@@ -13,7 +13,7 @@ function Attendance() {
             console.log("Fetching attendance...");
 
             const response = await fetch(
-                "https://172.1.27.35:5000/attendance/today"
+                "https://10.91.135.233:5000/attendance/today"
             );
 
             const data = await response.json();
